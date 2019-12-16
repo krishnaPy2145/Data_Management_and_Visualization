@@ -1,0 +1,144 @@
+
+title: "TSA_Claims_2002_2017"
+author: "Radha Krishna"
+date: "12/15/2019"
+
+
+
+1) Is certain occurrence of incidents is any association with Airports bases on Claim_Type ?
+
+Project is to prepare and analyze Transportation Security Administration (TSA) Airport Claims data from 2002 through 2017. 
+The TSA is an agency of the United States Department of Homeland Security that has authority over the security of the traveling public. 
+A claim is filed if you/we are injured or your/our property is lost or damaged during the screening process at an airport
+
+
+2) Collection of the raw data
+
+The data that is TSAClaims_2002_2017.csv, which was created from the following:
+• TSA Airport Claims data from https://www.dhs.gov/tsa-claims-data.
+• FAA Airport Facilities data from https://www.faa.gov/airports/airport_safety/airportdata_5010/.
+  The TSAClaims_2002_2017.csv file was created by concatenating each individual TSA Airport Claims table. 
+  After the concatenation, the data was joined with the FAA Airport Facilities data. Here are a few notes regarding the data:
+• All data is public data, and accuracy is not guaranteed.
+• The column Airport_Codes from the TSA Airport Claims data has been joined with Location_ID from the FAA Airports Facilities data. 
+  Some Airport_Codes values do not correspond to Location_ID values.
+• Columns in the TSA Airport Claims data have changed over the years. 
+  Because of this, some of the original columns were removed from the data for this case study.
+• The column Item_Category does not have consistent input values over the years. 
+ 
+
+3) Cleaning of the data
+
+Import the raw data file TSAClaims_2002_2017.csv.
+• Dataframe should be named claims_cleaned.
+• Entirely duplicated records need to be removed from the data set.
+• All missing and “-“ values in the columns Claim_Type, Claim_Site, and Disposition must be changed to Unknown.
+• Values in the columns Claim_Type, Claim_Site, and Disposition must follow the requirements in the data layout.
+• All StateName values should be in proper case.
+• All State values should be in uppercase.
+• Creating a new column named Date_Issues with a value of Needs Review to indicate that a row has a date issue. 
+   Date issues consist of the following:
+      –a missing value for Incident_Date or Date_Received
+	  – an Incident_Date or Date_Received value out of the predefined year range of 2002 through 2017
+	  – an Incident_Date value that occurs after the Date_Received value
+• Remove the County and City columns.
+• Currency should be permanently formatted with a dollar sign and include two decimal points.
+• All dates should be permanently formatted in the style 01JAN2000.
+• Permanent labels should be assigned columns by replacing the underscores with a space.
+• Final data should be sorted in ascending order by Incident_Date.
+
+
+4) Data Layout
+
+A) Claim_Number
+Number for each claim. Some claims can have duplicate claim numbers but different information for each claim. 
+Those claims are considered valid for this case study. Any duplicate rows should be removed from the data.
+
+B) Date_Received 
+Date the claim was received. Date_Received must occur after Incident_Date. 
+Range: From 2002 through 2017 
+
+C) Incident_Date 
+Date the incident occurred. Incident_Date must occur before Date_Received. 
+Range: From 2002 through 2017
+
+E) Airport_Code 
+Airport code three-letter abbreviation.
+
+F) Airport_Name 
+Full name of the airport.
+
+G)Claim_Type 
+Category of the claim. 
+If the claim is separated into two types by a slash, 
+Claim_Type is the first type. 
+For example: Personal Property Loss/Injury is considered Personal Property Loss. 
+Possible values (14): 
+	• Bus Terminal 
+	• Complaint 
+	• Compliment 
+	• Employee Loss (MPCECA) 
+	• Missed Flight 
+	• Motor Vehicle 
+	• Not Provided 
+	• Passenger Property Loss 
+	• Passenger Theft 
+	• Personal Injury 
+	• Property Damage 
+	• Property Loss 
+	• Unknown 
+	• Wrongful Death
+
+H) Claim_Site 
+Airport location of the claim. 
+Possible values (8): 
+	• Bus Station 
+	• Checked Baggage 
+	• Checkpoint 
+	• Motor Vehicle 
+	• Not Provided 
+	• Other 
+	• Pre-Check 
+	• Unknown
+	
+I)Item_Category 
+Type of items that have been filed in the claim. 
+Depending on the year of the data, the Item_Category values are input differently. 
+Because of varying consistency, you do not clean this column for the case study.
+
+J) Close_Amount 
+The dollar amount a claim was closed for.
+
+K) Disposition 
+The final settlement of the claim. 
+Possible values (10): 
+	• *Insufficient 
+	• Approve in Full 
+	• Closed:Canceled 
+	• Closed:Contractor Claim 
+	• Deny • In Review 
+	• Pending Payment 
+	• Received 
+	• Settle 
+	• Unknown *Insufficient is the value from the raw data.
+
+L) StateName 
+Associated airport state name (for example, NEW YORK). 
+Requirements: Values should be in all proper case. (Original data is in all uppercase.)
+
+M) County 
+Airport associated county (or parish) name (for example, Cook). 
+
+N) City 
+Associated airport city name (for example, CHICAGO).
+
+5) Additional 
+	A. How many date issues are in the overall data?
+	B. How many claims per year of Incident_Date are in the overall data? Be sure to include a plot.
+	C. Lastly, a user should be able to dynamically input a specific state value and answer the following:
+    D. What are the frequency values for Claim_Type for the selected state?
+	E.What are the frequency values for Claim_Site for the selected state?
+	F. What are the frequency values for Disposition for the selected state?
+	G. What is the mean, minimum, maximum, and sum of Close_Amount for the selected state? Round to the nearest integer.
+
+
