@@ -9,4 +9,13 @@ Is certain occurrence of incidents have any association with Airports bases on C
 secondary:
 Is Airport,Claim Type & Claim Site are effecting disposition status ?
 
+### Week 1 : 
+CodeNotes & Research Questions.
+
+### Week 2:
+1) read the datafile with out any errors
+2) displayed data model of datafile
+3) frequency distribution for 3 variables.
+
+
 
